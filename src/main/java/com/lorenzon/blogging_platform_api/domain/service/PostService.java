@@ -1,5 +1,6 @@
 package com.lorenzon.blogging_platform_api.domain.service;
 
+import com.lorenzon.blogging_platform_api.domain.exception.PostNotFoundException;
 import com.lorenzon.blogging_platform_api.domain.model.Post;
 import com.lorenzon.blogging_platform_api.domain.repository.PostRepository;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class PostService {
     @Transactional
     public Post update(Long postId, Post postUpdate) {
         Post post = postRepository.findById(postId)
-                .orElseThrow();
+                .orElseThrow(() -> new PostNotFoundException(postId));
         post.setTitle(postUpdate.getTitle());
         post.setContent(postUpdate.getContent());
         post.setCategory(postUpdate.getCategory());
@@ -34,12 +35,14 @@ public class PostService {
 
     @Transactional
     public void delete(Long postId) {
-        postRepository.deleteById(postId);
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new PostNotFoundException(postId));
+        postRepository.delete(post);
     }
 
     public Post findById(Long postId) {
         return postRepository.findById(postId)
-                .orElseThrow();
+                .orElseThrow(() -> new PostNotFoundException(postId));
     }
 
     public List<Post> findAll() {

@@ -8,6 +8,7 @@ import com.lorenzon.blogging_platform_api.domain.service.PostService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.OffsetDateTime;
@@ -24,7 +25,7 @@ public class PostController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PostRepresentationModel addPost(@Valid @RequestBody PostInput postInput) {
+    public PostRepresentationModel createPost(@Valid @RequestBody PostInput postInput) {
         Post post = postAssembler.toEntity(postInput);
         post.setCreatedAt(OffsetDateTime.now());
         return postAssembler.toModel(postService.save(post));
@@ -37,12 +38,13 @@ public class PostController {
         return postAssembler.toModel(postUpdated);
     }
 
-    @DeleteMapping("{postId}")
-    public void deletePost(@PathVariable Long postId) {
+    @DeleteMapping("/{postId}")
+    public ResponseEntity<Void> deletePost(@PathVariable Long postId) {
         postService.delete(postId);
+        return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("{postId}")
+    @GetMapping("/{postId}")
     public PostRepresentationModel getPost(@PathVariable Long postId) {
         return postAssembler.toModel(postService.findById(postId));
     }
