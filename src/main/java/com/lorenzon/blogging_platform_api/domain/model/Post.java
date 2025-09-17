@@ -1,15 +1,15 @@
 package com.lorenzon.blogging_platform_api.domain.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.vladmihalcea.hibernate.type.json.JsonType;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Setter
 @Getter
@@ -25,6 +25,11 @@ public class Post {
     private String title;
     private String content;
     private String category;
+
+    @Type(JsonType.class)
+    @Column(columnDefinition = "json")
+    private List<String> tags;
+
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
 
@@ -32,5 +37,6 @@ public class Post {
         this.title = source.getTitle();
         this.content = source.getContent();
         this.category = source.getCategory();
+        this.tags = source.getTags();
     }
 }

@@ -49,8 +49,10 @@ public class PostController {
     }
 
     @GetMapping
-    public List<PostRepresentationModel> getAllPosts() {
+    public List<PostRepresentationModel> getPosts(@RequestParam(required = false) String term) {
+        if (term != null && !term.isBlank()) {
+            return postAssembler.toCollection(postService.findByTerm(term));
+        }
         return postAssembler.toCollection(postService.findAll());
     }
-
 }
