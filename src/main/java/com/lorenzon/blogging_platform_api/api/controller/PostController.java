@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 
 
@@ -24,18 +23,18 @@ public class PostController {
     private final PostAssembler postAssembler;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public PostRepresentationModel createPost(@Valid @RequestBody PostInput postInput) {
+    public ResponseEntity<PostRepresentationModel> createPost(@Valid @RequestBody PostInput postInput) {
         Post post = postAssembler.toEntity(postInput);
-        post.setCreatedAt(OffsetDateTime.now());
-        return postAssembler.toModel(postService.save(post));
+        PostRepresentationModel postModel = postAssembler.toModel(postService.create(post));
+        return ResponseEntity.status(HttpStatus.CREATED).body(postModel);
     }
 
     @PutMapping("/{postId}")
-    public PostRepresentationModel updatePost(@PathVariable Long postId, @Valid @RequestBody PostInput postInput) {
+    public ResponseEntity<PostRepresentationModel> updatePost(@PathVariable Long postId, @Valid @RequestBody PostInput postInput) {
         Post post = postAssembler.toEntity(postInput);
         Post postUpdated = postService.update(postId, post);
-        return postAssembler.toModel(postUpdated);
+        PostRepresentationModel postModel = postAssembler.toModel(postUpdated);
+        return ResponseEntity.ok(postModel);
     }
 
     @DeleteMapping("/{postId}")

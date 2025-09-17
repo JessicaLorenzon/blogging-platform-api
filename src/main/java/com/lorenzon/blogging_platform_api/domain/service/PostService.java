@@ -17,26 +17,23 @@ public class PostService {
     private final PostRepository postRepository;
 
     @Transactional
-    public Post save(Post post) {
+    public Post create(Post post) {
+        post.setCreatedAt(OffsetDateTime.now());
         return postRepository.save(post);
     }
 
     @Transactional
     public Post update(Long postId, Post postUpdate) {
-        Post post = postRepository.findById(postId)
-                .orElseThrow(() -> new PostNotFoundException(postId));
-        post.setTitle(postUpdate.getTitle());
-        post.setContent(postUpdate.getContent());
-        post.setCategory(postUpdate.getCategory());
+        Post post = findById(postId);
+        post.updateWith(postUpdate);
         post.setUpdatedAt(OffsetDateTime.now());
 
-        return postRepository.save(post);
+        return post;
     }
 
     @Transactional
     public void delete(Long postId) {
-        Post post = postRepository.findById(postId)
-                .orElseThrow(() -> new PostNotFoundException(postId));
+        Post post = findById(postId);
         postRepository.delete(post);
     }
 

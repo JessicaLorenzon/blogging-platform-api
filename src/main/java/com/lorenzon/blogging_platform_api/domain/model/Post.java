@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.OffsetDateTime;
-import java.util.List;
 
 @Setter
 @Getter
@@ -28,4 +27,10 @@ public class Post {
     private String category;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
+
+    public void updateWith(Post source) {
+        this.title = source.getTitle();
+        this.content = source.getContent();
+        this.category = source.getCategory();
+    }
 }
