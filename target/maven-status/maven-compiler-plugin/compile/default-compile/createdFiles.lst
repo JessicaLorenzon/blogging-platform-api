@@ -1,0 +1,11 @@
+com\lorenzon\blogging_platform_api\common\ModelMapperConfig.class
+com\lorenzon\blogging_platform_api\domain\repository\PostRepository.class
+com\lorenzon\blogging_platform_api\BloggingPlatformApiApplication.class
+com\lorenzon\blogging_platform_api\api\model\PostRepresentationModel.class
+com\lorenzon\blogging_platform_api\api\assembler\PostAssembler.class
+com\lorenzon\blogging_platform_api\api\model\input\PostInput.class
+com\lorenzon\blogging_platform_api\domain\service\PostService.class
+com\lorenzon\blogging_platform_api\api\exceptionhandler\ApiExceptionHandler.class
+com\lorenzon\blogging_platform_api\domain\model\Post.class
+com\lorenzon\blogging_platform_api\domain\exception\PostNotFoundException.class
+com\lorenzon\blogging_platform_api\api\controller\PostController.class

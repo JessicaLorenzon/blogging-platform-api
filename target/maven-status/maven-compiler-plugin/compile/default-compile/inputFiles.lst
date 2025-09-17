@@ -1,0 +1,11 @@
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\api\assembler\PostAssembler.java
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\api\controller\PostController.java
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\api\exceptionhandler\ApiExceptionHandler.java
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\api\model\input\PostInput.java
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\api\model\PostRepresentationModel.java
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\BloggingPlatformApiApplication.java
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\common\ModelMapperConfig.java
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\domain\exception\PostNotFoundException.java
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\domain\model\Post.java
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\domain\repository\PostRepository.java
+C:\Users\Jessi\OneDrive\Documentos\dev\projects\blogging-platform-api\src\main\java\com\lorenzon\blogging_platform_api\domain\service\PostService.java
