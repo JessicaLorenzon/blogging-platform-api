@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.lorenzon</groupId>
     <artifactId>blogging-platform-api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>blogging-platform-api</name>
     <description>Blogging Platform API</description>
     <url/>
